@@ -1,0 +1,124 @@
+body {
+  margin: 0;
+}
+.nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  border: 1px solid black;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  color: white;
+  background-color: black;
+}
+.nav h1 {
+  border: 1px solid black;
+  margin: 0;
+  padding: 20px;
+  width: 330px;
+  text-align: center;
+}
+.footer {
+  background-color: black;
+  color: white;
+  text-align: center;
+}
+.footer h1 {
+  margin: 0;
+  padding: 10px;
+}
+.App {
+  display: grid;
+  grid-template-rows: 3fr 8fr 2fr;
+}
+.subNav {
+  display: flex;
+  justify-content: center;
+}
+
+.activeNav {
+  background-color: rgb(43, 197, 177);
+  border-radius: 10px;
+}
+.allMain {
+  min-height: 81.7vh;
+  border: 4px solid black;
+}
+
+.form {
+  border: 1px solid black;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  padding: 40px 0px 40px 0px;
+  align-items: center;
+  width: 400px;
+
+  margin: 100px 0 0 800px;
+}
+.form label,
+input,
+textarea {
+  margin-top: 20px;
+  font-size: 22px;
+}
+.form input {
+  border-radius: 10px;
+  border: 2px solid aquamarine;
+}
+.btn {
+  margin-top: 50px;
+  width: 270px;
+  display: flex;
+  justify-content: end;
+}
+.btnMain {
+  background-color: aquamarine;
+  padding: 10px 30px 10px 30px;
+  border: none;
+  border-radius: 10px;
+  font-size: 22px;
+  cursor: pointer;
+}
+.btnMain:hover {
+  background-color: rgb(35, 185, 196);
+}
+.about1 {
+  text-align: center;
+}
+
+.form textarea {
+  border-radius: 10px;
+  border: 2px solid aquamarine;
+}
+.home {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  gap: 20px;
+  margin: 50px 150px 100px 150px;
+  border: none;
+}
+.artikl {
+  border: 1px solid black;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+}
+.artikl img {
+  width: 200px;
+  width: 200px;
+  border-radius: 10px;
+}
+
+.activeSub {
+  background-color: aquamarine;
+  border-radius: 10px;
+}
+.subNav h2 {
+  margin: 10px;
+  padding: 10px;
+}
