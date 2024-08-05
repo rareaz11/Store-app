@@ -3,9 +3,17 @@ import Nav from "../Components/Nav";
 import SubNav from "../Components/SubNav";
 import { useState, useEffect } from "react";
 import Button from "../Components/Button";
-export default function Home({ navActive, setNavActive }) {
+export default function Home({
+  navActive,
+  setNavActive,
+  addToBasket,
+  setTotalPrice,
+  basketList,
+  cookie
+}) {
   const [country, setCountry] = useState([]);
   const [subMenu, setsubMenu] = useState("");
+
   useEffect(() => {
     fetch("http://localhost:8081/all")
       .then((res) => res.json())
@@ -13,7 +21,7 @@ export default function Home({ navActive, setNavActive }) {
       .catch((err) => console.log(err));
   }, []);
 
-  console.log(subMenu);
+  // console.log(subMenu);
 
   let newList = country;
   if (subMenu !== "") {
@@ -22,12 +30,17 @@ export default function Home({ navActive, setNavActive }) {
 
   return (
     <div>
-      <Nav navActive={navActive} setNavActive={setNavActive} />
+    <Nav cookie={cookie} navActive={navActive} setNavActive={setNavActive} basketList={basketList}/>
       <SubNav setsubMenu={setsubMenu} subMenu={subMenu} />
 
       <div className="allMain home">
         {newList.map((i) => (
-          <User prop={i} key={i.artiklId} />
+          <User
+            addToBasket={addToBasket}
+            prop={i}
+            key={i.artiklId}
+            setTotalPrice={setTotalPrice}
+          />
         ))}
       </div>
 
@@ -36,13 +49,15 @@ export default function Home({ navActive, setNavActive }) {
   );
 }
 
-function User({ prop }) {
+function User({ prop, addToBasket, setTotalPrice}) {
   return (
     <div className="artikl">
       <h1>{prop.artiklName}</h1>
       <img src="/slika.png" alt="slika1"></img>
       <h4> {prop.artiklDescription}</h4>
-      <Button>Add</Button>
+      <Button onClick={() => [addToBasket(prop), setTotalPrice(prop.price)]}>
+        Add
+      </Button>
     </div>
   );
 }

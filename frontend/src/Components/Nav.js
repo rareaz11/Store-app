@@ -1,41 +1,86 @@
 import { Link } from "react-router-dom";
 
-export default function Nav({ navActive, setNavActive }) {
-  console.log(navActive);
+export default function Nav({ navActive, setNavActive, basketList, cookie }) {
+  console.log(cookie);
   return (
     <div>
       <ul className="nav">
-        <h1
+        <Link
+          to="/"
           onClick={() => setNavActive("Home")}
-          className={navActive === "Home" ? "activeNav" : ""}
+          className={navActive === "Home" ? "activeNav headerNav" : "headerNav"}
         >
-          <Link to="/">Home</Link>
-        </h1>
-        <h1
-          className={navActive === "About" ? "activeNav" : ""}
+          Home
+        </Link>
+
+        <Link
+          to="/about"
+          className={
+            navActive === "About" ? "activeNav headerNav" : "headerNav"
+          }
           onClick={() => setNavActive("About")}
         >
-          <Link to="/about">About</Link>
-        </h1>
-        <h1
-          className={navActive === "Contact" ? "activeNav" : ""}
+          About
+        </Link>
+
+        <Link
+          to="/contactUs"
+          className={
+            navActive === "Contact" ? "activeNav headerNav" : "headerNav"
+          }
           onClick={() => setNavActive("Contact")}
         >
-          <Link to="/contactUs">Contact</Link>
-        </h1>
-        <h1
-          className={navActive === "Log" ? "activeNav" : ""}
-          onClick={() => setNavActive("Log")}
-        >
-          <Link to="/login">Log in</Link>
-        </h1>
-        <h1
-          className={navActive === "check" ? "activeNav" : ""}
+          Contact
+        </Link>
+
+        {cookie === "" ? (
+          <Link
+            to="/login"
+            className={
+              navActive === "Log" ? "activeNav headerNav" : "headerNav"
+            }
+            onClick={() => setNavActive("Log")}
+          >
+            Log in
+          </Link>
+        ) : (
+          <>
+            <Link
+              to="/profile"
+              className={
+                navActive === "profile" ? "activeNav headerNav" : "headerNav"
+              }
+              onClick={() => setNavActive("profile")}
+            >
+              Account
+            </Link>
+            <Link
+              to="/logout"
+              className={
+                navActive === "Log" ? "activeNav headerNav" : "headerNav"
+              }
+              onClick={() => setNavActive("Log")}
+            >
+              Log out
+            </Link>
+          </>
+        )}
+
+        <Link
+          to="/basket"
+          className={
+            navActive === "check" ? "activeNav headerNav1" : "headerNav1"
+          }
           onClick={() => setNavActive("check")}
         >
           👜
-        </h1>
+          <Counter basketList={basketList} />
+        </Link>
       </ul>
     </div>
   );
+}
+
+function Counter({ basketList }) {
+  return <div className="counter">{basketList.length}</div>;
 }

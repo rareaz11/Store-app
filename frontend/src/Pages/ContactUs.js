@@ -3,10 +3,15 @@ import Footer from "../Components/Footer";
 import Button from "../Components/Button";
 import { useState } from "react";
 
-export default function Contact({ navActive, setNavActive }) {
+export default function Contact({ navActive, setNavActive, basketList,cookie }) {
   return (
-    <div>
-      <Nav navActive={navActive} setNavActive={setNavActive} />
+    <div className="cont">
+      <Nav
+        navActive={navActive}
+        setNavActive={setNavActive}
+        basketList={basketList}
+        cookie={cookie}
+      />
       <h1>This is content of contact us</h1>
       <ContactForm />
 
@@ -44,7 +49,7 @@ function ContactForm() {
           onChange={(e) => setEmail(e.target.value)}
         />
         <label>Message: </label>
-        <textarea></textarea>
+        <textarea onChange={(e) => setText(e.target.value)}></textarea>
         <div className="btn">
           <Button>Submit</Button>
         </div>

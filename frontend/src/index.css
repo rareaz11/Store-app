@@ -12,13 +12,17 @@ body {
   color: white;
   background-color: black;
 }
-.nav h1 {
+.nav .headerNav {
   border: 1px solid black;
   margin: 0;
   padding: 20px;
   width: 330px;
   text-align: center;
+  text-decoration: none;
+  color: white;
+  font-size: 30px;
 }
+
 .footer {
   background-color: black;
   color: white;
@@ -42,8 +46,7 @@ body {
   border-radius: 10px;
 }
 .allMain {
-  min-height: 81.7vh;
-  border: 4px solid black;
+  min-height: 84.7vh;
 }
 
 .form {
@@ -121,4 +124,286 @@ textarea {
 .subNav h2 {
   margin: 10px;
   padding: 10px;
+}
+
+.listOfItems {
+  border: 1px solid black;
+  display: flex;
+  flex-direction: column;
+  margin: 150px;
+  border-radius: 10px;
+  padding: 10px;
+}
+.basket {
+  margin: 10px;
+  padding: 10px 100px 10px 100px;
+}
+.item {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  border-bottom: 2px solid black;
+}
+
+.item img {
+  width: 50px;
+  height: 50px;
+  border-radius: 10%;
+}
+.totalPrice {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.counter {
+  background-color: red;
+
+  font-size: 20px;
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  top: 53px;
+  right: 163px;
+  border-radius: 50%;
+}
+.nav .headerNav1 {
+  border: 1px solid black;
+  margin: 0;
+  padding: 20px;
+  width: 330px;
+  text-align: center;
+  text-decoration: none;
+  color: white;
+  font-size: 30px;
+  position: relative;
+}
+.cont h1 {
+  text-align: center;
+}
+
+/* media width*/
+
+@media (max-width: 1200px) {
+  .counter {
+    top: 47px;
+    right: 97px;
+  }
+  .home {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
+  .form {
+    margin: 100px 0px 100px 410px;
+  }
+}
+@media (max-width: 1000px) {
+  .counter {
+    top: 47px;
+    right: 78px;
+  }
+
+  .home {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+  .form {
+    margin: 100px 0px 100px 310px;
+  }
+}
+@media (max-width: 930px) {
+  .counter {
+    top: 47px;
+    right: 70px;
+  }
+  .form {
+    margin: 100px 0px 100px 270px;
+  }
+  .btnMain {
+    font-size: 18px;
+  }
+  .form label,
+  input {
+    font-size: 21px;
+  }
+  .listOfItems {
+    margin-top: 100px;
+  }
+  .basket {
+    padding: 0px;
+  }
+  .basket .item {
+    justify-content: space-around;
+  }
+  .totalPrice {
+    justify-content: space-between;
+  }
+}
+
+@media (max-width: 830px) {
+  .counter {
+    top: 47px;
+    right: 60px;
+  }
+  .home {
+    grid-template-columns: 1fr 1fr;
+  }
+  .form {
+    margin: 100px 0px 100px 210px;
+  }
+  .btnMain {
+    font-size: 14px;
+  }
+  .form label,
+  input {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 700px) {
+  .form label,
+  input {
+    font-size: 18px;
+  }
+  .counter {
+    top: 47px;
+    right: 48px;
+  }
+  .form {
+    margin: 50px 0px 50px 150px;
+  }
+  .listOfItems {
+    margin: 100px 100px 100px 100px;
+  }
+}
+
+@media (max-width: 620px) {
+  .form {
+    width: 350px;
+  }
+  .nav .headerNav {
+    font-size: 20px;
+  }
+  .counter {
+    top: 47px;
+    right: 40px;
+  }
+  .basket .item {
+    font-size: 15px;
+  }
+  .totalPrice {
+    font-size: 12px;
+  }
+  .item img {
+    width: 40px;
+    height: 40px;
+  }
+  .listOfItems {
+    margin: 100px 70px 100px 70px;
+  }
+}
+@media (max-width: 600px) {
+  .counter {
+    top: 32px;
+    right: 40px;
+    font-size: 15px;
+    width: 15px;
+    height: 15px;
+  }
+  .home {
+    grid-template-columns: 1fr;
+  }
+  .form {
+    margin: 50px 0px 50px 100px;
+  }
+  .nav .headerNav {
+    font-size: 18px;
+  }
+  .nav .headerNav1 {
+    font-size: 18px;
+  }
+
+  .subNav {
+    font-size: 10px;
+  }
+  .cont h1 {
+    font-size: 20px;
+    text-align: center;
+  }
+  .form label,
+  input {
+    font-size: 15px;
+  }
+  .btnMain {
+    font-size: 15px;
+  }
+
+  .basket .item {
+    font-size: 10px;
+  }
+  .item img {
+    width: 30px;
+    height: 30px;
+  }
+  .totalPrice {
+    font-size: 12px;
+  }
+  .listOfItems {
+    margin: 100px 70px 100px 70px;
+  }
+}
+
+@media (max-width: 500px) {
+  .counter {
+    top: 38px;
+    right: 40px;
+  }
+  .form {
+    margin: 20px 0px 20px 90px;
+  }
+  .form {
+    width: 300px;
+  }
+  .form h2 {
+    font-size: 20px;
+  }
+}
+@media (max-width: 416px) {
+  .home {
+    padding: 0;
+    margin: 50px;
+  }
+  .nav .headerNav {
+    padding-bottom: 0px;
+  }
+  .nav .headerNav1 {
+    font-size: 18px;
+  }
+  .form {
+    margin: 50px;
+  }
+  .counter {
+    top: 36px;
+    right: 20px;
+    font-size: 15px;
+    width: 15px;
+    height: 15px;
+  }
+  .allMain {
+    min-height: 84vh;
+  }
+}
+
+.dis {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+.liList {
+  display: flex;
+  border: 1px solid black;
+  border-radius: 10px;
+  justify-content: space-around;
+  margin: 10px;
+}
+.listOfOrder {
+  display: flex;
+  flex-direction: column;
+  width: 500px;
 }

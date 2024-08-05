@@ -1,10 +1,15 @@
 import Nav from "../Components/Nav";
 import Footer from "../Components/Footer";
 
-export default function About({ navActive, setNavActive }) {
+export default function About({ navActive, setNavActive, basketList, cookie }) {
   return (
     <div>
-      <Nav navActive={navActive} setNavActive={setNavActive} />
+      <Nav
+        cookie={cookie}
+        navActive={navActive}
+        setNavActive={setNavActive}
+        basketList={basketList}
+      />
       <MainAbout />
       <Footer />
     </div>

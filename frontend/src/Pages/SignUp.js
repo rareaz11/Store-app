@@ -2,19 +2,17 @@ import { useState, useEffect } from "react";
 import Button from "../Components/Button";
 import Footer from "../Components/Footer";
 import Nav from "../Components/Nav";
-import { Link } from "react-router-dom";
+import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
-export default function Log({
-  setCookie,
-  navActive,
-  setNavActive,
-  basketList,
-  cookie,
-  setUserID,
-}) {
+export default function Log({ navActive, setNavActive, basketList, cookie }) {
+  let nav = useNavigate();
+  if (cookie !== "") {
+    nav("../");
+  }
   const [userName, setUserName] = useState("");
   const [pass, setPass] = useState("");
+  const [email, setEmail] = useState("");
   const navigate = useNavigate();
 
   const [user, setUser] = useState([]);
@@ -28,35 +26,44 @@ export default function Log({
   function handleErr(e) {
     e.preventDefault();
 
-    if (userName === "" || !userName) {
-      alert("User name empty!");
+    if (
+      userName === "" ||
+      !userName ||
+      pass === "" ||
+      !pass ||
+      email === "" ||
+      !email
+    ) {
+      alert("Check field! Error empty!");
       return;
     }
-    if (pass === "" || !pass) {
-      alert("Password empty!");
-      return;
-    }
-    for (let index = 0; index < user.length; index++) {
-      if (user[index].userName === userName && user[index].pass === pass) {
-        alert("Successfully logged in");
-        setCookie(user[index].userName);
-        setUserID(user[index].userID);
-        navigate("../logout");
 
+    for (let index = 0; index < user.length; index++) {
+      if (user[index].userName === userName || user[index].email === email) {
+        alert("User or email already exsist");
+        setEmail("");
+        setPass("");
+        setUserName("");
         //add navigation and change layout of navbar component
         return;
       }
     }
 
-    alert("Error");
+    axios
+      .post("http://localhost:8081/create", { userName, pass, email })
+      .then((res) => {
+        console.log(res);
+        navigate("../login");
+      })
+      .catch((err) => console.log(err));
   }
   return (
     <div>
       <Nav
+        cookie={cookie}
         navActive={navActive}
         setNavActive={setNavActive}
         basketList={basketList}
-        cookie={cookie}
       />
       <div className="allMain">
         <form className="form" onSubmit={(e) => handleErr(e)}>
@@ -72,19 +79,16 @@ export default function Log({
             type="text"
             onChange={(e) => setPass(e.target.value)}
           />
+          <label>Your email:</label>
+          <input
+            value={email}
+            type="text"
+            onChange={(e) => setEmail(e.target.value)}
+          />
+
           <div className="btn">
-            <Button>Log in</Button>
+            <Button>Register</Button>
           </div>
-          <h2>
-            Create account...{" "}
-            <Link
-              to="/signup"
-              className={navActive === "ok" ? "" : ""}
-              onClick={() => setNavActive("")}
-            >
-              Sign Up
-            </Link>
-          </h2>
         </form>
       </div>
       <Footer />
